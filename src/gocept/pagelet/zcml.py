@@ -68,7 +68,9 @@ class ViewletPageDirective(object):
             self._context, self.class_, self.name, self.permission,
             **self.kwargs)
 
-    def viewlet(self, _context, name, permission, **kwargs):
+    def viewlet(self, _context, name, permission, layer=None, **kwargs):
         kwargs["manager"] = gocept.pagelet.viewletpage.IViewletPageManager
         zope.viewlet.metaconfigure.viewletDirective(
-            _context, name, permission, **kwargs)
+            _context, name, permission,
+            layer=layer or self.kwargs.get("layer"),
+            **kwargs)
