@@ -30,6 +30,8 @@ setup(
         'setuptools',
         'zope.interface',
         'zope.component',
+        'zope.publisher',
+        'zope.viewlet',
         'z3c.template',
         'z3c.pagelet',
     ],
