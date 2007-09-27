@@ -10,17 +10,18 @@
       handler=".zcml.pageletDirective"
       />
 
-    <meta:directive
+    <meta:complexDirective
        name="viewletpage"
        schema=".zcml.IPageletDirective"
-       handler=".zcml.viewlet_page_directive"
-       />
+       handler=".zcml.ViewletPageDirective"
+       >
 
-    <meta:directive
-       name="viewlet"
-       schema="zope.viewlet.metadirectives.IViewletDirective"
-       handler=".zcml.viewlet_directive"
-       />
+      <meta:subdirective
+         name="viewlet"
+         schema="zope.viewlet.metadirectives.IViewletDirective"
+         />
+
+    </meta:complexDirective>
 
   </meta:directives>
 

@@ -52,14 +52,23 @@ def pageletDirective(
             _context, template, for_=new_class, layer=layer)
 
 
-def viewlet_page_directive(_context, name, permission,
-                           class_=gocept.pagelet.viewletpage.ViewletPage,
-                           **kwargs):
-    z3c.pagelet.zcml.pageletDirective(
-        _context, class_, name, permission, **kwargs)
+class ViewletPageDirective(object):
 
+    def __init__(self, _context, name, permission,
+                 class_=gocept.pagelet.viewletpage.ViewletPage,
+                 **kwargs):
+        self._context = _context
+        self.name = name
+        self.permission = permission
+        self.class_ = class_
+        self.kwargs = kwargs
 
-def viewlet_directive(_context, name, permission, **kwargs):
-    kwargs["manager"] = gocept.pagelet.viewletpage.IViewletPageManager
-    zope.viewlet.metaconfigure.viewletDirective(
-        _context, name, permission, **kwargs)
+    def __call__(self):
+        z3c.pagelet.zcml.pageletDirective(
+            self._context, self.class_, self.name, self.permission,
+            **self.kwargs)
+
+    def viewlet(self, _context, name, permission, **kwargs):
+        kwargs["manager"] = gocept.pagelet.viewletpage.IViewletPageManager
+        zope.viewlet.metaconfigure.viewletDirective(
+            _context, name, permission, **kwargs)
