@@ -5,9 +5,12 @@
 import zope.configuration.fields
 import zope.interface
 import zope.publisher.interfaces.browser
+import zope.viewlet.metaconfigure
 
 import z3c.pagelet.zcml
 import z3c.template.zcml
+
+import gocept.pagelet.viewletpage
 
 
 class IPageletDirective(z3c.pagelet.zcml.IPageletDirective):
@@ -47,3 +50,16 @@ def pageletDirective(
     if template:
         z3c.template.zcml.templateDirective(
             _context, template, for_=new_class, layer=layer)
+
+
+def viewlet_page_directive(_context, name, permission,
+                           class_=gocept.pagelet.viewletpage.ViewletPage,
+                           **kwargs):
+    z3c.pagelet.zcml.pageletDirective(
+        _context, class_, name, permission, **kwargs)
+
+
+def viewlet_directive(_context, name, permission, **kwargs):
+    kwargs["manager"] = gocept.pagelet.viewletpage.IViewletPageManager
+    zope.viewlet.metaconfigure.viewletDirective(
+        _context, name, permission, **kwargs)
