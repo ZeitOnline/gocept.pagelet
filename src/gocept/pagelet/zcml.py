@@ -7,6 +7,11 @@ import zope.interface
 import zope.publisher.interfaces.browser
 import zope.viewlet.metaconfigure
 
+import zope.app.publisher.browser.fields
+import zope.app.publisher.browser.viewmeta
+
+import z3c.pagelet.browser
+import z3c.pagelet.interfaces
 import z3c.pagelet.zcml
 import z3c.template.zcml
 
@@ -31,11 +36,32 @@ class IPageletDirective(z3c.pagelet.zcml.IPageletDirective):
         required=False,
         )
 
+    title = zope.configuration.fields.MessageID(
+        title=u"The browser menu label for the page (view)",
+        description=u"""
+          This attribute must be supplied if a menu attribute is
+          supplied.
+          """,
+        required=False
+        )
+   
+    menu = zope.app.publisher.browser.fields.MenuField(
+        title=u"The browser menu to include the page (view) in.",
+        description=u"""
+          Many views are included in menus. It's convenient to name
+          the menu in the page directive, rather than having to give a
+          separate menuItem directive.  'zmi_views' is the menu most often
+          used in the Zope management interface.
+          </description>
+          """,
+        required=False
+        )
 
 def pageletDirective(
     _context, name, permission, class_=None, for_=zope.interface.Interface,
     layer=zope.publisher.interfaces.browser.IDefaultBrowserLayer,
     allowed_interface=None, allowed_attributes=None, template=None,
+    title=None, menu=None,
     **kwargs):
 
     if class_:
@@ -44,12 +70,17 @@ def pageletDirective(
         new_class = type('SimplePagelet', (object, ), {})
 
     z3c.pagelet.zcml.pageletDirective(
-        _context, new_class, name, permission, for_, layer,
-        allowed_interface, allowed_attributes)
+        _context, new_class, name, permission,
+        for_=for_, layer=layer,
+        allowed_interface=allowed_interface,
+        allowed_attributes=allowed_attributes)
 
     if template:
         z3c.template.zcml.templateDirective(
             _context, template, for_=new_class, layer=layer)
+
+    zope.app.publisher.browser.viewmeta._handle_menu(
+        _context, menu, title, [for_], name, permission, layer)
 
 
 class ViewletPageDirective(object):
