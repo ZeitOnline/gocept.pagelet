@@ -9,10 +9,10 @@ from setuptools import setup, find_packages
 
 setup(
     name = 'gocept.pagelet',
-    version = "0.1",
+    version = "0.1dev",
     author = "Christian Zagrodnick",
     author_email = "cz@gocept.com",
-    description = "Extensions for zope.formlib",
+    description = "Easier pagelet handling",
     long_description = file(os.path.join(os.path.dirname(__file__),
                                          'src', 'gocept', 'pagelet',
                                          'README.txt')).read(),
