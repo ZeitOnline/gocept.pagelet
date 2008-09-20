@@ -13,7 +13,7 @@ def read(*rel_path):
 
 setup(
     name = 'gocept.pagelet',
-    version = "0.1dev",
+    version = "0.1",
     author = "Christian Zagrodnick",
     author_email = "cz@gocept.com",
     description = "Easier z3c.pagelet handling",
