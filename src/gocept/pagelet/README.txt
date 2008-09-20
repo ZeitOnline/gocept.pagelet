@@ -1,9 +1,9 @@
-=========================
-Easy Pagelet Registration
-=========================
+=============================
+Easy z3c.pagelet registration
+=============================
 
-The `<gocept:pagelet>` directive allows easier registration of pagelets. It
-behaves quite like `<browser:page>`.[1]_
+The `<gocept:pagelet>` directive allows easier registration of
+z3c.pagelets. It behaves quite like `<browser:page>`.[1]_
 
 .. [1] We need some zcml setup:
 
@@ -13,7 +13,7 @@ behaves quite like `<browser:page>`.[1]_
     >>> context = xmlconfig.file('meta.zcml', gocept.pagelet)
 
 
-Template Only
+Template only
 =============
 
 It is possible to just use a template as pagelet. A class is not required:
@@ -23,7 +23,7 @@ It is possible to just use a template as pagelet. A class is not required:
 ...     xmlns:gocept="http://namespaces.gocept.com/zcml">
 ...   <gocept:pagelet
 ...       name="index.html"
-...       for="*"  
+...       for="*"
 ...       permission="zope.Public"
 ...       template="test-template.pt"
 ...       />
@@ -47,7 +47,7 @@ When we render the pagelet the test-template is used:
 u'Hello from the test template.\n'
 
 
-Class Only
+Class only
 ==========
 
 Of course it's also possible to register a class without a template. Create a
@@ -81,7 +81,6 @@ Make it available via ZCML:
 ... </configure>
 ... """, context)
 
-
 Get the pagelet:
 
 >>> pagelet = zope.component.getMultiAdapter(
@@ -93,7 +92,7 @@ u'Hello from the custom pagelet.'
 
 
 
-Class and Template
+Class and template
 ==================
 
 It's for course also possible to specify both class and template. So create
