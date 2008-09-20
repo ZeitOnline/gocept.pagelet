@@ -23,6 +23,17 @@ setup(
         ),
     license = "ZPL 2.1",
     url='http://pypi.python.org/pypi/gocept.pagelet',
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Framework :: Zope3',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved',
+        'License :: OSI Approved :: Zope Public License',
+        'Natural Language :: English',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Topic :: Software Development :: Libraries :: Python Modules'],
+    keywords = 'easy z3.pagelet zope3 pagelet zope',
 
     packages = find_packages('src'),
     package_dir = {'': 'src'},
