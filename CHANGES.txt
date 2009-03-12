@@ -5,7 +5,7 @@
 0.2 (unreleased)
 ================
 
--
+- Allow arbitrary number of context elements for adaptation.
 
 0.1 (2008-09-20)
 ================
