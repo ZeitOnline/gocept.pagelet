@@ -23,6 +23,15 @@ class IPageletDirective(z3c.pagelet.zcml.IPageletDirective):
 
     """
 
+    for_ = zope.configuration.fields.Tokens(
+        title=u"Specifications of the objects to be viewed",
+        description=u"""This should be a list of interfaces or classes""",
+        required=True,
+        value_type=zope.configuration.fields.GlobalObject(
+          missing_value=object(),
+          ),
+        )
+
     class_ = zope.configuration.fields.GlobalObject(
         title=u"Class",
         description=u"A class that provides attributes used by the pagelet.",
@@ -69,9 +78,9 @@ def pageletDirective(
     else:
         new_class = type('SimplePagelet', (object, ), {})
 
-    z3c.pagelet.zcml.pageletDirective(
+    original_pageletDirective(
         _context, new_class, name, permission,
-        for_=for_, layer=layer,
+        for_=tuple(for_), layer=layer,
         allowed_interface=allowed_interface,
         allowed_attributes=allowed_attributes)
 
@@ -80,7 +89,7 @@ def pageletDirective(
             _context, template, for_=new_class, layer=layer)
 
     zope.app.publisher.browser.viewmeta._handle_menu(
-        _context, menu, title, [for_], name, permission, layer)
+        _context, menu, title, tuple(for_), name, permission, layer)
 
 
 class ViewletPageDirective(object):
@@ -105,3 +114,67 @@ class ViewletPageDirective(object):
             _context, name, permission,
             layer=layer or self.kwargs.get("layer"),
             **kwargs)
+
+
+# pagelet directive
+def original_pageletDirective(
+    _context, class_, name, permission, for_=(zope.interface.Interface,),
+    layer=zope.publisher.interfaces.browser.IDefaultBrowserLayer,
+    provides=z3c.pagelet.interfaces.IPagelet,
+    allowed_interface=None, allowed_attributes=None, **kwargs):
+
+    viewmeta = zope.app.publisher.browser.viewmeta
+
+    # Security map dictionary
+    required = {}
+
+    # Get the permission; mainly to correctly handle CheckerPublic.
+    permission = viewmeta._handle_permission(_context, permission)
+
+    # The class must be specified.
+    if not class_:
+        raise ConfigurationError("Must specify a class.")
+
+    if not zope.interface.interfaces.IInterface.providedBy(provides):
+        raise ConfigurationError("Provides interface provide IInterface.")
+
+    ifaces = list(zope.interface.Declaration(provides).flattened())
+    if z3c.pagelet.interfaces.IPagelet not in ifaces:
+        raise ConfigurationError("Provides interface must inherit IPagelet.")
+
+    # Build a new class that we can use different permission settings if we
+    # use the class more then once.
+    cdict = {}
+    cdict['__name__'] = name
+    cdict.update(kwargs)
+    new_class = type(class_.__name__, (class_, z3c.pagelet.browser.BrowserPagelet), cdict)
+
+    # Set up permission mapping for various accessible attributes
+    viewmeta._handle_allowed_interface(
+        _context, allowed_interface, permission, required)
+    viewmeta._handle_allowed_attributes(
+        _context, allowed_attributes, permission, required)
+    viewmeta._handle_allowed_attributes(
+        _context, kwargs.keys(), permission, required)
+    viewmeta._handle_allowed_attributes(
+        _context, ('__call__', 'browserDefault', 'update', 'render', 
+                   'publishTraverse'), permission, required)
+
+    # Register the interfaces.
+    for i in for_:
+        viewmeta._handle_for(_context, i)
+
+    # provide the custom provides interface if not allready provided
+    if not provides.implementedBy(new_class):
+        zope.interface.classImplements(new_class, provides)
+
+    # Create the security checker for the new class
+    zope.security.checker.defineChecker(new_class, 
+        zope.security.checker.Checker(required))
+
+    # register pagelet
+    _context.action(
+        discriminator = ('pagelet',) +  for_ + (layer, name),
+        callable = zope.component.zcml.handler,
+        args = ('registerAdapter',
+                new_class, for_ + (layer,), provides, name, _context.info),)

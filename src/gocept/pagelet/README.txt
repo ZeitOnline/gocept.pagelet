@@ -37,7 +37,7 @@ We should now have a page:
 >>> pagelet = zope.component.getMultiAdapter(
 ...     (object, TestRequest()), name='index.html')
 >>> pagelet
-<z3c.pagelet.zcml.SimplePagelet object at 0x...>
+<gocept.pagelet.zcml.SimplePagelet object at 0x...>
 >>> pagelet.__name__
 u'index.html'
 
@@ -86,7 +86,7 @@ Get the pagelet:
 >>> pagelet = zope.component.getMultiAdapter(
 ...     (object, TestRequest()), name='class.html')
 >>> pagelet
-<z3c.pagelet.zcml.MyPagelet object at 0x...>
+<gocept.pagelet.zcml.MyPagelet object at 0x...>
 >>> pagelet.render()
 u'Hello from the custom pagelet.'
 
@@ -124,7 +124,7 @@ Make it available via zcml:
 >>> pagelet = zope.component.getMultiAdapter(
 ...     (object, TestRequest()), name='class-template.html')
 >>> pagelet
-<z3c.pagelet.zcml.MyPagelet2 object at 0x...>
+<gocept.pagelet.zcml.MyPagelet2 object at 0x...>
 >>> pagelet.render()
 u'Hello from the test template.\n'
 >>> pagelet.i_am_very_custom
