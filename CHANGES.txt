@@ -5,7 +5,8 @@
 0.3 (unreleased)
 ================
 
-- Nothing changed yet.
+- Using ``zope.browserpage`` and ``zope.browsermenu`` instead of
+  ``zope.app.publisher``.
 
 
 0.2 (2009-12-27)
