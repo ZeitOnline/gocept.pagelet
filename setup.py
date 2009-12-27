@@ -50,6 +50,7 @@ setup(
         'zope.viewlet',
         'z3c.template',
         'z3c.pagelet',
+        'zope.app.publisher',
     ],
     extras_require = dict(
         test=['zope.testing'])
