@@ -2,7 +2,7 @@
  Changes
 =========
 
-0.3 (unreleased)
+0.3 (2009-12-27)
 ================
 
 - Using ``zope.browserpage`` and ``zope.browsermenu`` instead of
