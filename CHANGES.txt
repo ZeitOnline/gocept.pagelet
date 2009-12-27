@@ -2,7 +2,7 @@
  Changes
 =========
 
-0.2 (unreleased)
+0.2 (2009-12-27)
 ================
 
 - Allow arbitrary number of context elements for adaptation.
@@ -10,7 +10,7 @@
 0.1 (2008-09-20)
 ================
 
-- first public release
+- First public release.
 
 
 ==============
@@ -19,4 +19,4 @@
 
 - Michael Howitz <mh at gocept dot com>
 
-
+- Christian Theune <ct at gocept dot com>
