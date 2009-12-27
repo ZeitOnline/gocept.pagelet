@@ -7,8 +7,8 @@ import zope.interface
 import zope.publisher.interfaces.browser
 import zope.viewlet.metaconfigure
 
-import zope.app.publisher.browser.fields
-import zope.app.publisher.browser.viewmeta
+import zope.browsermenu.field
+import zope.browserpage.metaconfigure
 
 import z3c.pagelet.browser
 import z3c.pagelet.interfaces
@@ -53,8 +53,8 @@ class IPageletDirective(z3c.pagelet.zcml.IPageletDirective):
           """,
         required=False
         )
-   
-    menu = zope.app.publisher.browser.fields.MenuField(
+
+    menu = zope.browsermenu.field.MenuField(
         title=u"The browser menu to include the page (view) in.",
         description=u"""
           Many views are included in menus. It's convenient to name
@@ -88,7 +88,7 @@ def pageletDirective(
         z3c.template.zcml.templateDirective(
             _context, template, for_=new_class, layer=layer)
 
-    zope.app.publisher.browser.viewmeta._handle_menu(
+    zope.browserpage.metaconfigure._handle_menu(
         _context, menu, title, tuple(for_), name, permission, layer)
 
 
@@ -123,13 +123,12 @@ def original_pageletDirective(
     provides=z3c.pagelet.interfaces.IPagelet,
     allowed_interface=None, allowed_attributes=None, **kwargs):
 
-    viewmeta = zope.app.publisher.browser.viewmeta
-
     # Security map dictionary
     required = {}
 
     # Get the permission; mainly to correctly handle CheckerPublic.
-    permission = viewmeta._handle_permission(_context, permission)
+    permission = zope.browserpage.metaconfigure._handle_permission(
+        _context, permission)
 
     # The class must be specified.
     if not class_:
@@ -150,26 +149,26 @@ def original_pageletDirective(
     new_class = type(class_.__name__, (class_, z3c.pagelet.browser.BrowserPagelet), cdict)
 
     # Set up permission mapping for various accessible attributes
-    viewmeta._handle_allowed_interface(
+    zope.browserpage.metaconfigure._handle_allowed_interface(
         _context, allowed_interface, permission, required)
-    viewmeta._handle_allowed_attributes(
+    zope.browserpage.metaconfigure._handle_allowed_attributes(
         _context, allowed_attributes, permission, required)
-    viewmeta._handle_allowed_attributes(
+    zope.browserpage.metaconfigure._handle_allowed_attributes(
         _context, kwargs.keys(), permission, required)
-    viewmeta._handle_allowed_attributes(
-        _context, ('__call__', 'browserDefault', 'update', 'render', 
+    zope.browserpage.metaconfigure._handle_allowed_attributes(
+        _context, ('__call__', 'browserDefault', 'update', 'render',
                    'publishTraverse'), permission, required)
 
     # Register the interfaces.
     for i in for_:
-        viewmeta._handle_for(_context, i)
+        zope.browserpage.metaconfigure._handle_for(_context, i)
 
     # provide the custom provides interface if not allready provided
     if not provides.implementedBy(new_class):
         zope.interface.classImplements(new_class, provides)
 
     # Create the security checker for the new class
-    zope.security.checker.defineChecker(new_class, 
+    zope.security.checker.defineChecker(new_class,
         zope.security.checker.Checker(required))
 
     # register pagelet
