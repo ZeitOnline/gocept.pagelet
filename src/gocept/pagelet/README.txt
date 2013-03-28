@@ -63,7 +63,7 @@ class and make it available in a module:
 Make it available under the fake package ``custom``:
 
 >>> sys.modules['custom'] = type(
-...     'Module', (), 
+...     'Module', (),
 ...     {'MyPagelet': MyPagelet})()
 
 
@@ -74,9 +74,9 @@ Make it available via ZCML:
 ...     xmlns:gocept="http://namespaces.gocept.com/zcml">
 ...   <gocept:pagelet
 ...       name="class.html"
-...       for="*"  
+...       for="*"
 ...       permission="zope.Public"
-...       class="custom.MyPagelet"  
+...       class="custom.MyPagelet"
 ...       />
 ... </configure>
 ... """, context)
@@ -102,7 +102,7 @@ another pagelet class and register it:
 ...     """Custom pagelet"""
 ...     i_am_very_custom = True
 >>> sys.modules['custom'] = type(
-...     'Module', (), 
+...     'Module', (),
 ...     {'MyPagelet': MyPagelet2})()
 
 
@@ -113,9 +113,9 @@ Make it available via zcml:
 ...     xmlns:gocept="http://namespaces.gocept.com/zcml">
 ...   <gocept:pagelet
 ...       name="class-template.html"
-...       for="*"  
+...       for="*"
 ...       permission="zope.Public"
-...       class="custom.MyPagelet"  
+...       class="custom.MyPagelet"
 ...       template="test-template.pt"
 ...       />
 ... </configure>
