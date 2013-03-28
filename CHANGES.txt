@@ -5,6 +5,10 @@
 0.4 (unreleased)
 ================
 
+- When registering a pagelet using ZCML which only has template, the name of
+  the template is rendered in the ``repr`` the generated class to have a
+  clue what is the purpose of this class when debugging.
+
 - Updated tests to use Python's `doctest` instead of deprecated
   `zope.testing.doctest`.
 

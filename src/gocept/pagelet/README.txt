@@ -37,7 +37,7 @@ We should now have a page:
 >>> pagelet = zope.component.getMultiAdapter(
 ...     (object, TestRequest()), name='index.html')
 >>> pagelet
-<gocept.pagelet.zcml.SimplePagelet object at 0x...>
+<gocept.pagelet.zcml.SimplePagelet from .../gocept/pagelet/test-template.pt object at 0x...>
 >>> pagelet.__name__
 u'index.html'
 

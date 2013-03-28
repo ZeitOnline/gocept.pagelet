@@ -76,7 +76,10 @@ def pageletDirective(
     if class_:
         new_class = class_
     else:
-        new_class = type('SimplePagelet', (object, ), {})
+        class_name = 'SimplePagelet'
+        if template:
+            class_name += ' from %s' % str(template)
+            new_class = type(class_name, (object, ), {})
 
     original_pageletDirective(
         _context, new_class, name, permission,
