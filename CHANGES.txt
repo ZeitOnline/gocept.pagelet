@@ -5,7 +5,8 @@
 0.4 (unreleased)
 ================
 
-- Nothing changed yet.
+- Updated tests to use Python's `doctest` instead of deprecated
+  `zope.testing.doctest`.
 
 
 0.3 (2009-12-27)
