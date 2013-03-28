@@ -2,7 +2,7 @@
  Changes
 =========
 
-0.4 (unreleased)
+0.4 (2013-03-28)
 ================
 
 - When registering a pagelet using ZCML which only has template, the name of
