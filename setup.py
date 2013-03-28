@@ -14,7 +14,7 @@ def read(rel_path):
 
 setup(
     name = 'gocept.pagelet',
-    version='0.4',
+    version='0.5.dev0',
     author = "Christian Zagrodnick",
     author_email = "cz@gocept.com",
     description = "Easier z3c.pagelet handling",
