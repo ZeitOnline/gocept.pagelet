@@ -3,14 +3,17 @@ Easy z3c.pagelet registration
 =============================
 
 The `<gocept:pagelet>` directive allows easier registration of
-z3c.pagelets. It behaves quite like `<browser:page>`.[1]_
+z3c.pagelets. It behaves quite like `<browser:page>`.
 
-.. [1] We need some zcml setup:
+Setup
+=====
 
-    >>> import sys
-    >>> from zope.configuration import xmlconfig
-    >>> import gocept.pagelet
-    >>> context = xmlconfig.file('meta.zcml', gocept.pagelet)
+We need some zcml setup:
+
+>>> import sys
+>>> from zope.configuration import xmlconfig
+>>> import gocept.pagelet
+>>> context = xmlconfig.file('meta.zcml', gocept.pagelet)
 
 
 Template only
