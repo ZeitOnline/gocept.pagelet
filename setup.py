@@ -16,6 +16,7 @@ setup(
     description="Easier z3c.pagelet handling",
     long_description='\n\n'.join([
         read('README.txt'),
+        read('COPYRIGHT.txt'),
         read('CHANGES.txt'),
         read('src/gocept/pagelet/README.txt')]),
     license="ZPL 2.1",
