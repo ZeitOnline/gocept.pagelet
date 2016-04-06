@@ -15,10 +15,10 @@ setup(
     author_email="cz@gocept.com",
     description="Easier z3c.pagelet handling",
     long_description='\n\n'.join([
-        read('README.txt'),
+        read('README.rst'),
         read('COPYRIGHT.txt'),
-        read('CHANGES.txt'),
-        read('src/gocept/pagelet/README.txt')]),
+        read('CHANGES.rst'),
+        read('src/gocept/pagelet/README.rst')]),
     license="ZPL 2.1",
     url='http://pypi.python.org/pypi/gocept.pagelet',
     classifiers=[
