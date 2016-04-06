@@ -2,7 +2,7 @@
  Changes
 =========
 
-1.0 (unreleased)
+1.0 (2016-04-06)
 ================
 
 - Update `bootstrap.py` to a ``zc.buildout 2.3``.
