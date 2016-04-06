@@ -2,12 +2,15 @@
  Changes
 =========
 
-0.5 (unreleased)
+1.0 (unreleased)
 ================
 
 - Update `bootstrap.py` to a ``zc.buildout 2.3``.
 
 - Use py.test as test runner.
+
+- Declare the explicit support of Python 2.7.
+  No other Python versions are currently supported.
 
 0.4 (2013-03-28)
 ================

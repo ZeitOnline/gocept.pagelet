@@ -10,7 +10,7 @@ def read(rel_path):
 
 setup(
     name='gocept.pagelet',
-    version='0.5.dev0',
+    version='1.0.dev0',
     author="Christian Zagrodnick",
     author_email="mail@gocept.com",
     description="Easier z3c.pagelet handling",
@@ -22,7 +22,7 @@ setup(
     license="ZPL 2.1",
     url='https://bitbucket.org/gocept/gocept.pagelet',
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Framework :: Zope3',
         'Intended Audience :: Developers',
         'License :: OSI Approved',
@@ -30,7 +30,13 @@ setup(
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Topic :: Software Development :: Libraries :: Python Modules'],
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 2 :: Only',
+        'Programming Language :: Python :: Implementation :: CPython',
+        'Topic :: Software Development :: Libraries',
+        'Topic :: Software Development :: Libraries :: Python Modules'
+    ],
     keywords='easy z3c.pagelet zope3 pagelet zope',
     packages=find_packages('src'),
     package_dir={'': 'src'},
