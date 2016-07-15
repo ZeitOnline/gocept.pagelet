@@ -5,7 +5,7 @@
 1.1 (unreleased)
 ================
 
-- Nothing changed yet.
+- Use tox for testing.
 
 
 1.0 (2016-04-06)
