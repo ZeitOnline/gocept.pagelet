@@ -5,13 +5,17 @@ syntax: glob
 .DS_Store
 .cache
 .coverage
+.coverage.*
 .installed.cfg
+.tox
 bin
 build
 coverage-report
+coverage.xml
 develop-eggs
 dist
 doc/_api
 eggs
+junit-*
 local.cfg
 parts
