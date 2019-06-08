@@ -6,7 +6,8 @@ def read(rel_path):
     rel_path = rel_path.split('/')
     base_path = os.path.dirname(__file__)
     path = (base_path,) + tuple(rel_path)
-    return open(os.path.join(*path)).read()
+    with open(os.path.join(*path)) as f:
+        return f.read()
 
 setup(
     name='gocept.pagelet',
@@ -33,8 +34,10 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Software Development :: Libraries',

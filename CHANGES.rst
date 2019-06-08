@@ -5,7 +5,7 @@
 1.1 (unreleased)
 ================
 
-- Claim support of Python 3.4, 3.5 and PyPy.
+- Claim support of Python 3.5, 3.6, 3.7, 3.8, PyPy and PyPy3.
 
 - Use tox for testing.
 
