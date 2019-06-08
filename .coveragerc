@@ -1,6 +1,6 @@
 [run]
 branch = True
-source = gocept.pagelet
+source = src
 
 [report]
 precision = 2
