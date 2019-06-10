@@ -2,7 +2,7 @@
  Changes
 =========
 
-1.1 (unreleased)
+1.1 (2019-06-10)
 ================
 
 - Claim support of Python 3.5, 3.6, 3.7, 3.8, PyPy and PyPy3.
