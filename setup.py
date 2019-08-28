@@ -21,7 +21,7 @@ setup(
         read('CHANGES.rst'),
         read('src/gocept/pagelet/README.rst')]),
     license="ZPL 2.1",
-    url='https://bitbucket.org/gocept/gocept.pagelet',
+    url='https://github.com/gocept/gocept.pagelet',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Framework :: Zope3',

@@ -7,6 +7,8 @@
 
 - Nothing changed yet.
 
+- Migrate to Github.
+
 
 1.1 (2019-06-10)
 ================
