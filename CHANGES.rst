@@ -5,8 +5,6 @@
 1.2 (unreleased)
 ================
 
-- Nothing changed yet.
-
 - Migrate to Github.
 
 
