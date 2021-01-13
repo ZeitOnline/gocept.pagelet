@@ -7,6 +7,8 @@
 
 - Migrate to Github.
 
+- Use Github actions as CI.
+
 
 1.1 (2019-06-10)
 ================
