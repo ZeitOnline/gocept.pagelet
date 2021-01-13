@@ -9,6 +9,7 @@ def read(rel_path):
     with open(os.path.join(*path)) as f:
         return f.read()
 
+
 setup(
     name='gocept.pagelet',
     version='1.2.dev0',

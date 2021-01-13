@@ -4,6 +4,7 @@ source = src
 
 [report]
 precision = 2
+fail_under = 77
 
 [html]
 directory = coverage-report
