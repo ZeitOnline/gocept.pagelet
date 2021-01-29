@@ -2,9 +2,9 @@
 # See also LICENSE.txt
 # $Id$
 
+import z3c.pagelet.browser
 import zope.viewlet.interfaces
 import zope.viewlet.manager
-import z3c.pagelet.browser
 
 
 class IViewletPageManager(zope.viewlet.interfaces.IViewletManager):
