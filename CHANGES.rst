@@ -5,6 +5,10 @@
 1.2 (unreleased)
 ================
 
+- Drop support for Python 3.5, 3.6.
+
+- Add support for Python 3.9, 3.10, 3.11.
+
 - Migrate to Github.
 
 - Use Github actions as CI.
