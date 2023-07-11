@@ -20,7 +20,7 @@ class ViewletPage(z3c.pagelet.browser.BrowserPagelet):
     template = None
 
     def __init__(self, context, request):
-        super(ViewletPage, self).__init__(context, request)
+        super().__init__(context, request)
         self.vm = ViewletPageManager(context, request, self)
         self.vm.template = self.template
 
