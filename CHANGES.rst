@@ -2,16 +2,12 @@
  Changes
 =========
 
-1.2 (unreleased)
+2.0 (unreleased)
 ================
 
-- Drop support for Python 3.5, 3.6.
+- Drop support for Python 2.7, 3.5, 3.6.
 
 - Add support for Python 3.9, 3.10, 3.11.
-
-- Migrate to Github.
-
-- Use Github actions as CI.
 
 
 1.1 (2019-06-10)

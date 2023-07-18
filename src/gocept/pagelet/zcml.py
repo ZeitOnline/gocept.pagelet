@@ -16,8 +16,8 @@ class IPageletDirective(z3c.pagelet.zcml.IPageletDirective):
     """A directive to easily register a new pagelet with a layout template."""
 
     for_ = zope.configuration.fields.Tokens(
-        title=u"Specifications of the objects to be viewed",
-        description=u"""This should be a list of interfaces or classes""",
+        title="Specifications of the objects to be viewed",
+        description="""This should be a list of interfaces or classes""",
         required=True,
         value_type=zope.configuration.fields.GlobalObject(
               missing_value=object(),
@@ -25,21 +25,21 @@ class IPageletDirective(z3c.pagelet.zcml.IPageletDirective):
     )
 
     class_ = zope.configuration.fields.GlobalObject(
-        title=u"Class",
-        description=u"A class that provides attributes used by the pagelet.",
+        title="Class",
+        description="A class that provides attributes used by the pagelet.",
         required=False,
     )
 
     template = zope.configuration.fields.Path(
-        title=u'Layout template.',
-        description=u"Refers to a file containing a page template (should "
+        title='Layout template.',
+        description="Refers to a file containing a page template (should "
         "end in extension ``.pt`` or ``.html``).",
         required=False,
     )
 
     title = zope.configuration.fields.MessageID(
-        title=u"The browser menu label for the page (view)",
-        description=u"""
+        title="The browser menu label for the page (view)",
+        description="""
           This attribute must be supplied if a menu attribute is
           supplied.
           """,
@@ -47,8 +47,8 @@ class IPageletDirective(z3c.pagelet.zcml.IPageletDirective):
     )
 
     menu = zope.browsermenu.field.MenuField(
-        title=u"The browser menu to include the page (view) in.",
-        description=u"""
+        title="The browser menu to include the page (view) in.",
+        description="""
           Many views are included in menus. It's convenient to name
           the menu in the page directive, rather than having to give a
           separate menuItem directive.  'zmi_views' is the menu most often
@@ -88,7 +88,7 @@ def pageletDirective(  # noqa
         _context, menu, title, tuple(for_), name, permission, layer)
 
 
-class ViewletPageDirective(object):
+class ViewletPageDirective:
     """Directive to register a new pagelet with a layout template."""
 
     def __init__(self, _context, name, permission,

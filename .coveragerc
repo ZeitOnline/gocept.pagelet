@@ -5,6 +5,8 @@ source = src
 [report]
 precision = 2
 fail_under = 77
+exclude_also =
+    pragma: no cover
 
 [html]
 directory = coverage-report
