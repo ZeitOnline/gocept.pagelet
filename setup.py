@@ -1,4 +1,3 @@
-from setuptools import find_packages
 from setuptools import setup
 import os.path
 
@@ -13,7 +12,7 @@ def read(rel_path):
 
 setup(
     name='gocept.pagelet',
-    version='2.1.dev0',
+    version='2.1+importlib',
     author="Christian Zagrodnick",
     author_email="mail@gocept.com",
     description="Easier z3c.pagelet handling",
@@ -45,14 +44,10 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     keywords='easy z3c.pagelet zope3 pagelet zope',
-    packages=find_packages('src'),
-    package_dir={'': 'src'},
     include_package_data=True,
     zip_safe=False,
-    namespace_packages=['gocept'],
     python_requires='>=3.7',
     install_requires=[
-        'setuptools',
         'zope.interface',
         'zope.component',
         'zope.publisher',
