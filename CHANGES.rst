@@ -2,7 +2,7 @@
  Changes
 =========
 
-2.1 (unreleased)
+2.1 (2025-10-24)
 ================
 
 - Replace pkg_resources with pep420 namespace package.
