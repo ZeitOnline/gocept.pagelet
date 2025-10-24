@@ -5,7 +5,7 @@
 2.1 (unreleased)
 ================
 
-- Nothing changed yet.
+- Replace pkg_resources with pep420 namespace package.
 
 
 2.0 (2023-07-18)
